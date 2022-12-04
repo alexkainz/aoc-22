@@ -18,7 +18,7 @@ fn solve(day: Box<dyn puzzle::Puzzle>) {
     let input = Path::new(&input);
 
     let puzzle_name = format!("Day {:02}: {}", nr, name);
-    println!("--- {} ---", puzzle_name.bold());
+    println!("--- {} ---", puzzle_name.yellow());
 
     let [expected, answer] = day.expected1();
     assert_eq!(day.solve1(example), expected, "{} (example)", puzzle_name);
@@ -28,10 +28,10 @@ fn solve(day: Box<dyn puzzle::Puzzle>) {
     let duration = start.elapsed();
 
     assert_eq!(expected, answer, "{} (input)", puzzle_name);
-    println!("    Answer: {} [{:?}]", answer, duration);
+    println!("    Answer: {} [{:?}]", answer.to_string().bold(), duration);
 
     let puzzle_name = format!("Day {:02}: Part Two", nr);
-    println!("--- {} ---", puzzle_name.bold());
+    println!("--- {} ---", puzzle_name.yellow());
 
     let [expected, answer] = day.expected2();
     assert_eq!(day.solve2(example), expected, "{} (example)", puzzle_name);
@@ -41,7 +41,7 @@ fn solve(day: Box<dyn puzzle::Puzzle>) {
     let duration = start.elapsed();
 
     assert_eq!(expected, answer, "{} (input)", puzzle_name);
-    println!("    Answer: {} [{:?}]", answer, duration);
+    println!("    Answer: {} [{:?}]", answer.to_string().bold(), duration);
 }
 
 fn main() {
