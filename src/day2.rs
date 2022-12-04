@@ -70,61 +70,51 @@ fn choose(shape: Shape, outcome: Outcome) -> Shape {
     }
 }
 
-fn solve1(path: &Path) -> i32 {
-    let file = File::open(path).unwrap();
-    let buf = BufReader::new(file);
+pub struct Day2;
 
-    let mut total_score = 0;
+impl crate::puzzle::Puzzle for Day2 {
+    fn info(&self) -> (i8, String) { (2, String::from("Rock Paper Scissors")) }
 
-    for line in buf.lines() {
-        let line = line.unwrap();
-        let mut it = line.split_whitespace();
-        let line = [it.next().unwrap(), it.next().unwrap()];
-        let a = Shape::from_str(line[0]).unwrap();
-        let b = Shape::from_str(line[1]).unwrap();
+    fn solve1(&self, path: &Path) -> i32 {
+        let file = File::open(path).unwrap();
+        let buf = BufReader::new(file);
 
-        total_score += b.score() + play(b, a).score();
+        let mut total_score = 0;
+
+        for line in buf.lines() {
+            let line = line.unwrap();
+            let mut it = line.split_whitespace();
+            let line = [it.next().unwrap(), it.next().unwrap()];
+            let a = Shape::from_str(line[0]).unwrap();
+            let b = Shape::from_str(line[1]).unwrap();
+
+            total_score += b.score() + play(b, a).score();
+        }
+
+        return total_score;
     }
 
-    return total_score;
-}
+    fn expected1(&self) -> [i32; 2] { [15, 13526] }
 
-fn solve2(path: &Path) -> i32 {
-    let file = File::open(path).unwrap();
-    let buf = BufReader::new(file);
+    fn solve2(&self, path: &Path) -> i32 {
+        let file = File::open(path).unwrap();
+        let buf = BufReader::new(file);
 
-    let mut total_score = 0;
+        let mut total_score = 0;
 
-    for line in buf.lines() {
-        let line = line.unwrap();
-        let mut it = line.split_whitespace();
-        let line = [it.next().unwrap(), it.next().unwrap()];
-        let a = Shape::from_str(line[0]).unwrap();
-        let outcome = Outcome::from_str(line[1]).unwrap();
-        let b = choose(a, outcome);
+        for line in buf.lines() {
+            let line = line.unwrap();
+            let mut it = line.split_whitespace();
+            let line = [it.next().unwrap(), it.next().unwrap()];
+            let a = Shape::from_str(line[0]).unwrap();
+            let outcome = Outcome::from_str(line[1]).unwrap();
+            let b = choose(a, outcome);
 
-        total_score += b.score() + play(b, a).score();
+            total_score += b.score() + play(b, a).score();
+        }
+
+        return total_score;
     }
 
-    return total_score;
-}
-
-pub fn run() {
-    let example = Path::new("data/day2.example");
-    let input = Path::new("data/day2.input");
-
-    println!("--- Day 2: Rock Paper Scissors ---");
-
-    assert_eq!(solve1(example), 15);
-
-    let answer1 = solve1(input);
-    assert_eq!(answer1, 13526);
-    println!("Answer: {}", answer1);
-
-    println!("--- Part Two ---");
-
-    assert_eq!(solve2(example), 12);
-    let answer2 = solve2(input);
-    assert_eq!(answer2, 14204);
-    println!("Answer: {}", answer2);
+    fn expected2(&self) -> [i32; 2] { [12, 14204] }
 }
