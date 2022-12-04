@@ -27,7 +27,7 @@ impl Puzzle for Day1 {
             }
         }
 
-        return cmp::max(elf_calories, max_calories);
+        cmp::max(elf_calories, max_calories)
     }
 
     fn expected1(&self) -> [i32; 2] { [24000, 70369] }
@@ -63,8 +63,7 @@ impl Puzzle for Day1 {
         }
 
         top_three = next_top_three(top_three, elf_calories);
-
-        return top_three[0] + top_three[1] + top_three[2];
+        top_three[0] + top_three[1] + top_three[2]
     }
 
     fn expected2(&self) -> [i32; 2] { [45000, 203002] }

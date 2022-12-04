@@ -35,7 +35,7 @@ impl Puzzle for Day4 {
             }
         }
 
-        return pairs;
+        pairs
     }
 
     fn expected1(&self) -> [i32; 2] { [2, 305] }
@@ -57,7 +57,7 @@ impl Puzzle for Day4 {
             }
         }
 
-        return pairs;
+        pairs
     }
 
     fn expected2(&self) -> [i32; 2] { [4, 811] }

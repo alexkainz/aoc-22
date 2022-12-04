@@ -32,7 +32,7 @@ impl Puzzle for Day3 {
             sum_priorities += priority(common);
         }
 
-        return sum_priorities;
+        sum_priorities
     }
 
     fn expected1(&self) -> [i32; 2] { [157, 8153] }
@@ -60,7 +60,7 @@ impl Puzzle for Day3 {
             sum_priorities += priority(common);
         }
 
-        return sum_priorities;
+        sum_priorities
     }
 
     fn expected2(&self) -> [i32; 2] { [70, 2342] }

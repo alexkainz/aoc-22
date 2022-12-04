@@ -92,7 +92,7 @@ impl Puzzle for Day2 {
             total_score += b.score() + play(b, a).score();
         }
 
-        return total_score;
+        total_score
     }
 
     fn expected1(&self) -> [i32; 2] { [15, 13526] }
@@ -114,7 +114,7 @@ impl Puzzle for Day2 {
             total_score += b.score() + play(b, a).score();
         }
 
-        return total_score;
+        total_score
     }
 
     fn expected2(&self) -> [i32; 2] { [12, 14204] }
