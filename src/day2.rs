@@ -71,8 +71,9 @@ fn choose(shape: Shape, outcome: Outcome) -> Shape {
 }
 
 pub struct Day2;
+use crate::puzzle::Puzzle;
 
-impl crate::puzzle::Puzzle for Day2 {
+impl Puzzle for Day2 {
     fn info(&self) -> (i8, String) { (2, String::from("Rock Paper Scissors")) }
 
     fn solve1(&self, path: &Path) -> i32 {

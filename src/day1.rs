@@ -4,8 +4,9 @@ use std::io::{BufRead, BufReader};
 use std::path::Path;
 
 pub struct Day1;
+use crate::puzzle::Puzzle;
 
-impl crate::puzzle::Puzzle for Day1 {
+impl Puzzle for Day1 {
     fn info(&self) -> (i8, String) { (1, String::from("Calorie Counting")) }
 
     fn solve1(&self, path: &Path) -> i32 {
