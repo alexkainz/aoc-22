@@ -15,7 +15,7 @@ fn priority(codepoint: i32) -> i32 {
 impl Puzzle for Day3 {
     fn info(&self) -> (i8, String) { (3, String::from("Rucksack Reorganization")) }
 
-    fn solve1(&self, path: &Path) -> i32 {
+    fn solve1(&self, path: &Path) -> String {
         let file = File::open(path).unwrap();
         let buf = BufReader::new(file);
 
@@ -32,12 +32,12 @@ impl Puzzle for Day3 {
             sum_priorities += priority(common);
         }
 
-        sum_priorities
+        sum_priorities.to_string()
     }
 
-    fn expected1(&self) -> [i32; 2] { [157, 8153] }
+    fn expected1(&self) -> [String; 2] { [157.to_string(), 8153.to_string()] }
 
-    fn solve2(&self, path: &Path) -> i32 {
+    fn solve2(&self, path: &Path) -> String {
         let file = File::open(path).unwrap();
         let buf = BufReader::new(file);
 
@@ -60,8 +60,8 @@ impl Puzzle for Day3 {
             sum_priorities += priority(common);
         }
 
-        sum_priorities
+        sum_priorities.to_string()
     }
 
-    fn expected2(&self) -> [i32; 2] { [70, 2342] }
+    fn expected2(&self) -> [String; 2] { [70.to_string(), 2342.to_string()] }
 }

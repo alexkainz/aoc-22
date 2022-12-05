@@ -76,7 +76,7 @@ use crate::puzzle::Puzzle;
 impl Puzzle for Day2 {
     fn info(&self) -> (i8, String) { (2, String::from("Rock Paper Scissors")) }
 
-    fn solve1(&self, path: &Path) -> i32 {
+    fn solve1(&self, path: &Path) -> String {
         let file = File::open(path).unwrap();
         let buf = BufReader::new(file);
 
@@ -92,12 +92,12 @@ impl Puzzle for Day2 {
             total_score += b.score() + play(b, a).score();
         }
 
-        total_score
+        total_score.to_string()
     }
 
-    fn expected1(&self) -> [i32; 2] { [15, 13526] }
+    fn expected1(&self) -> [String; 2] { [15.to_string(), 13526.to_string()] }
 
-    fn solve2(&self, path: &Path) -> i32 {
+    fn solve2(&self, path: &Path) -> String {
         let file = File::open(path).unwrap();
         let buf = BufReader::new(file);
 
@@ -114,8 +114,8 @@ impl Puzzle for Day2 {
             total_score += b.score() + play(b, a).score();
         }
 
-        total_score
+        total_score.to_string()
     }
 
-    fn expected2(&self) -> [i32; 2] { [12, 14204] }
+    fn expected2(&self) -> [String; 2] { [12.to_string(), 14204.to_string()] }
 }

@@ -9,7 +9,7 @@ use crate::puzzle::Puzzle;
 impl Puzzle for Day1 {
     fn info(&self) -> (i8, String) { (1, String::from("Calorie Counting")) }
 
-    fn solve1(&self, path: &Path) -> i32 {
+    fn solve1(&self, path: &Path) -> String {
         let file = File::open(path).unwrap();
         let buf = BufReader::new(file);
 
@@ -27,12 +27,12 @@ impl Puzzle for Day1 {
             }
         }
 
-        cmp::max(elf_calories, max_calories)
+        cmp::max(elf_calories, max_calories).to_string()
     }
 
-    fn expected1(&self) -> [i32; 2] { [24000, 70369] }
+    fn expected1(&self) -> [String; 2] { [24000.to_string(), 70369.to_string()] }
 
-    fn solve2(&self, path: &Path) -> i32 {
+    fn solve2(&self, path: &Path) -> String {
         let file = File::open(path).unwrap();
         let buf = BufReader::new(file);
 
@@ -63,8 +63,8 @@ impl Puzzle for Day1 {
         }
 
         top_three = next_top_three(top_three, elf_calories);
-        top_three[0] + top_three[1] + top_three[2]
+        (top_three[0] + top_three[1] + top_three[2]).to_string()
     }
 
-    fn expected2(&self) -> [i32; 2] { [45000, 203002] }
+    fn expected2(&self) -> [String; 2] { [45000.to_string(), 203002.to_string()] }
 }

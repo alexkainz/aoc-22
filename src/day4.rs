@@ -18,7 +18,7 @@ fn get_pairs(line: &String) -> [[i32; 2]; 2] {
 impl Puzzle for Day4 {
     fn info(&self) -> (i8, String) { (4, String::from("Camp Cleanup")) }
 
-    fn solve1(&self, path: &Path) -> i32 {
+    fn solve1(&self, path: &Path) -> String {
         let buf = BufReader::new(File::open(path).unwrap());
         let mut pairs = 0;
 
@@ -35,12 +35,12 @@ impl Puzzle for Day4 {
             }
         }
 
-        pairs
+        pairs.to_string()
     }
 
-    fn expected1(&self) -> [i32; 2] { [2, 305] }
+    fn expected1(&self) -> [String; 2] { [2.to_string(), 305.to_string()] }
 
-    fn solve2(&self, path: &Path) -> i32 {
+    fn solve2(&self, path: &Path) -> String {
         let buf = BufReader::new(File::open(path).unwrap());
         let mut pairs = 0;
 
@@ -57,8 +57,8 @@ impl Puzzle for Day4 {
             }
         }
 
-        pairs
+        pairs.to_string()
     }
 
-    fn expected2(&self) -> [i32; 2] { [4, 811] }
+    fn expected2(&self) -> [String; 2] { [4.to_string(), 811.to_string()] }
 }
