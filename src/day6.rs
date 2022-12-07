@@ -1,4 +1,3 @@
-use std::collections::HashSet;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::Path;
@@ -11,7 +10,7 @@ fn solve(path: &Path, size: usize) -> usize {
         .lines().next().unwrap().unwrap()
         .as_bytes()
         .windows(size)
-        .position(|x| HashSet::<&u8>::from_iter(x).len() == size)
+        .position(|x| !(1..x.len()).any(|i| x[i..].contains(&x[i - 1])))
         .unwrap() + size
 }
 
