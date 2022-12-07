@@ -8,10 +8,10 @@ use crate::puzzle::Puzzle;
 
 fn solve(path: &Path, size: usize) -> usize {
     BufReader::new(File::open(path).unwrap())
-        .lines().next().unwrap().unwrap().chars()
-        .collect::<Vec<char>>()
+        .lines().next().unwrap().unwrap()
+        .as_bytes()
         .windows(size)
-        .position(|x| HashSet::<&char>::from_iter(x).len() == size)
+        .position(|x| HashSet::<&u8>::from_iter(x).len() == size)
         .unwrap() + size
 }
 
