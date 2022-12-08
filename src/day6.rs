@@ -1,5 +1,6 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
+use std::ops::Not;
 use std::path::Path;
 
 pub struct Day6;
@@ -10,7 +11,7 @@ fn solve(path: &Path, size: usize) -> usize {
         .lines().next().unwrap().unwrap()
         .as_bytes()
         .windows(size)
-        .position(|x| !(1..x.len()).any(|i| x[i..].contains(&x[i - 1])))
+        .position(|x| (1..x.len()).any(|i| x[i..].contains(&x[i - 1])).not())
         .unwrap() + size
 }
 
